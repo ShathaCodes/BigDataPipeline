@@ -4,7 +4,7 @@
 
 We used **Lambda architecture** which is a data-processing architecture designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods.
 
-![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/architecture.PNG)
+![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/arch.PNG)
 
 ### Execution
 
