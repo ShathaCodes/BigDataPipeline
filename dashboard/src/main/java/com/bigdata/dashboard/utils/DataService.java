@@ -9,8 +9,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.bigdata.dashboard.entity.Temperature;
-import com.bigdata.dashboard.entity.Humidity;
+
 import com.bigdata.dashboard.repository.TemperatureRepository;
 import com.bigdata.dashboard.repository.HumidityRepository;
 
@@ -30,31 +29,32 @@ public class DataService {
 	@Autowired
 	private HumidityRepository humidityRepository;
 
-	// Method sends data message in every 15 seconds.
-	@Scheduled(fixedRate = 15000)
+	// Method sends data message in every 10 seconds.
+	@Scheduled(fixedRate = 10000)
 	public void trigger() {
 		System.out.println("triggered");
-		List<Temperature> temperatures = new ArrayList<>();
-		List<Humidity> humidities = new ArrayList<>();
+		List<Double> temperatures = new ArrayList<>();
+		List<Double> humidities = new ArrayList<>();
 
 		Long time = new Date().getTime();
 		Date date = new Date(time - time % ( 60 * 1000)); // get data from the last minute
-		System.out.println(date);
+		//Date date = new Date(time - time % (2 * 24 * 60 * 60 * 1000));
 
-		temperatureRepository.findTemperatureByDate(date).forEach(e -> temperatures.add(e));
-		humidityRepository.findHumidityByDate(date).forEach(e -> humidities.add(e));
+		temperatureRepository.findTemperatureByDate(date).forEach(e -> temperatures.add(e.getValue()));
+		humidityRepository.findHumidityByDate(date).forEach(e -> humidities.add(e.getValue()));
 
-		for (Temperature t : temperatures) {
-			System.out.println(t);
-		}
-		for (Humidity h : humidities) {
-			System.out.println(h);
-		}
+		// temperatureRepository.findTemperatureByDate(date).forEach(e ->
+		// temperatures.add(e.getValue()));
+		// humidityRepository.findHumidityByDate(date).forEach(e ->
+		// humidities.add(e.getValue()));
+
+		double temperature = temperatures.size() > 0 ? temperatures.get(temperatures.size() - 1) : 20;
+		double humidity = humidities.size() > 0 ? humidities.get(humidities.size() - 1) : 80;
 
 		// prepare response
 		Response response = new Response();
-		response.setHumidity(humidities);
-		response.setTemperature(temperatures);
+		response.setHumidity(humidity);
+		response.setTemperature(temperature);
 
 		// send to ui
 		this.template.convertAndSend("/topic/data", response);

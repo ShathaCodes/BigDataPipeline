@@ -6,10 +6,11 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 
+
 @SpringBootApplication
 @EnableScheduling
 @EnableCassandraRepositories("com.bigdata.dashboard.repository")
-public class SensorDataDashboard {
+public class SensorDataDashboard  {
     public static void main(String[] args) {
         SpringApplication.run(SensorDataDashboard.class, args);
     }
