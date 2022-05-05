@@ -18,7 +18,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class Test {
+public class Processor {
 
 	public static void main(String[] args) throws Exception {
 
