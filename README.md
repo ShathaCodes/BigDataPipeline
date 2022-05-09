@@ -21,7 +21,7 @@ We used **Lambda architecture** which is a data-processing architecture designed
 
 ### Stack
 
-- Java 11
+- Java 1.8
 - Maven
 - SpringBoot
 - ZooKeeper
