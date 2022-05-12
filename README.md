@@ -33,7 +33,7 @@ We used **Lambda architecture** which is a data-processing architecture designed
 
 ### Execution
 
-![execution](https://raw.githubusercontent.com/ShathaCodes/BigData/main/dashboard.PNG)
+![execution](https://raw.githubusercontent.com/ShathaCodes/BigData/main/execution.PNG)
 
 All component parts are dynamically managed using Docker, which means you don't need to worry about setting up your local environment, the only thing you need is to have Docker installed. Just run 
 
