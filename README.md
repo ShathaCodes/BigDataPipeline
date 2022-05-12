@@ -16,7 +16,7 @@ We divided the application into three modules. These modules are standalone Mave
 
 We used **Lambda architecture** which is a data-processing architecture designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods.
 
-![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/arch.PNG)
+![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/architecture.PNG)
 
 
 ### Stack
@@ -33,6 +33,8 @@ We used **Lambda architecture** which is a data-processing architecture designed
 
 ### Execution
 
+![execution](https://raw.githubusercontent.com/ShathaCodes/BigData/main/dashboard.PNG)
+
 All component parts are dynamically managed using Docker, which means you don't need to worry about setting up your local environment, the only thing you need is to have Docker installed. Just run 
 
 ```
@@ -42,7 +44,7 @@ docker-compose up
 You must also create the database schema in Cassandra
 
 ```
-docker exec -it cassandra-iot cqlsh --username cassandra --password cassandra -f /schema.cql
+docker exec cassandra-iot cqlsh --username cassandra --password cassandra -f /schema.cql
 ```
 
 You must also create the folder to save the data for later batch processing
