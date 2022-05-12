@@ -2,6 +2,12 @@
 
 The application is an IoT data processing and monitoring application. 
 
+### Architecture
+
+We used **Lambda architecture** which is a data-processing architecture designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods.
+
+![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/architecture.PNG)
+
 We divided the application into three modules. These modules are standalone Maven applications written in Java and can be built and run independently.
 
 1. **Kafka Producer:** This module simulates Realtime IoT data coming from a Sensor. It generates mock Temperature and Humidity values every 2 to 5s which are then sent as events to a topic in Kafka.
@@ -11,25 +17,6 @@ We divided the application into three modules. These modules are standalone Mave
     - **Batch Processor** : The processor needs visibility on all the SensorData in order to calculate the average of both Temperature and Humidity. We are processing the batch data using Spark and storing the pre-computed views into Cassandra.
 
 3. **Dashboard:** This is a Spring Boot application which will retrieve data from the Cassandra database and send it to a web page. This application uses Web Sockets and jQuery to push the streamed data to the web page in fixed intervals so data will be refreshed automatically. The average values are pushed in different intervals since Batch Processing takes a longer time. We used two different types of Google chart tools to showcase realtime and average values.
-
-### Architecture
-
-We used **Lambda architecture** which is a data-processing architecture designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods.
-
-![architecture](https://raw.githubusercontent.com/ShathaCodes/BigData/main/architecture.PNG)
-
-
-### Stack
-
-- Java 1.8
-- Maven
-- SpringBoot
-- ZooKeeper
-- Kafka
-- Cassandra
-- Spark 
-- Hadoop HDFS
-- Docker
 
 ### Execution
 
@@ -70,3 +57,15 @@ You can view the dashboard on
 ```
 localhost:3000
 ```
+
+### Stack
+
+- Java 1.8
+- Maven
+- SpringBoot
+- ZooKeeper
+- Kafka
+- Cassandra
+- Spark 
+- Hadoop HDFS
+- Docker
